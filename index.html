@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>KALKULATOR</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+<script>
+	function insert(num) {
+        var display = document.form.tampilan;
+        if (num === '%') {
+            var currentValue = eval(display.value);
+            display.value = currentValue / 100;
+			var isiLama = (display.value);
+			display.value = currentValue+"%";
+        } else {
+            display.value = display.value + num;
+        }
+    }
+
+    function c() {
+        document.form.tampilan.value = "";
+    }
+
+    function del() {
+        var x = document.form.tampilan.value;
+        document.form.tampilan.value = x.substring(0, x.length - 1)
+    }
+
+    function samadengan() {
+        var x = document.form.tampilan.value;
+        if (x == "") {
+            alert("Please enter");
+        }
+        if (x) {
+            x = x.replace(/%/g, '/100');
+            document.form.tampilan.value = eval(x);
+        }
+    }
+</script>
+<style>
+	.btn {
+		width: 50px;
+		height: 50px;
+	}
+</style>
+<body>
+	<table border="1" class="justify-content-center">
+		<tr>
+			<td colspan="4">
+				<form action="" name="form">
+					<input type="text" name="tampilan" id="tampilan" class="tampilan form-control" placeholder="0">
+				</form>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button type="button" class="btn btn-secondary" onclick="c()">C</button>
+			</td>
+			<td>
+				<button type="button" class="btn btn-secondary" onclick="del()">del</button>
+			</td>
+			<td>
+				<button type="button" class="btn btn-success" onclick="insert('%')">%</button>
+			</td>
+			<td>
+				<button type="button" class="btn btn-success" onclick="insert('+')">+</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button type="button" class="btn btn-primary" onclick="insert(7)">7</button>
+			</td>
+			<td>
+				<button type="button" class="btn btn-primary" onclick="insert(8)">8</button>
+			</td>
+			<td>
+				<button type="button" class="btn btn-primary" onclick="insert(9)">9</button>
+			</td>
+			<td>
+				<button type="button" class="btn btn-success" onclick="insert('-')">-</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button type="button" class="btn btn-primary" onclick="insert(4)">4</button>
+			</td>
+			<td>
+				<button type="button" class="btn btn-primary" onclick="insert(5)">5</button>
+			</td>
+			<td>
+				<button type="button" class="btn btn-primary" onclick="insert(6)">6</button>
+			</td>
+			<td>
+				<button type="button" class="btn btn-success" onclick="insert('*')">x</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button type="button" class="btn btn-primary" onclick="insert(1)">1</button>
+			</td>
+			<td>
+				<button type="button" class="btn btn-primary" onclick="insert(2)">2</button>
+			</td>
+			<td>
+				<button type="button" class="btn btn-primary" onclick="insert(3)">3</button>
+			</td>
+			<td>
+				<button type="button" class="btn btn-success" onclick="insert('/')">:</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button type="button" class="btn btn-primary" onclick="insert(0)">0</button>
+			</td>
+			<td>
+				<button type="button" class="btn btn-primary" onclick="insert('00')">00</button>
+			</td>
+			<td>
+				<button type="button" class="btn btn-primary" onclick="insert('.')">.</button>
+			</td>
+			<td>
+				<button type="button" class="btn btn-warning" onclick="samadengan()">=</button>
+			</td>
+		</tr>
+	</table>
+
+	<script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
